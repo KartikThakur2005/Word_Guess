@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+#define max 100
 #define ResultGreen 1
 #define ResultYellow 2
 #define ResultRed 4
@@ -13,6 +14,16 @@
 
 
 typedef  char Result;
+
+struct s_words
+{
+     char **arr;
+     int n;
+};
+
+typedef struct s_words Words; 
+
+
 
 bool isin(char,char*);
 void Example_print(Result*);
@@ -88,6 +99,86 @@ Result cc(char guess, int idx, char *word)
     return ResultRed;
    
 }
+
+Words readfile(char* filename)
+{
+     char buf[8];
+     int i, size;
+
+     FILE *fd;
+ 
+    static char ret[max][5];
+     
+     fd = fopen(filename, "r");
+
+     if (!fd)
+     {
+         perror("fopen erro");
+       Words words = 
+        {
+            .arr = (char **)0,
+            .n = 0,
+        };
+
+         return words;
+     };
+
+  
+  i = 0;
+  memset(buf, 0, 8);
+
+  while ( fgets(buf, 7, fd))
+  {
+     size = strlen(buf);
+
+     if ( size < 1)
+     {
+         memset(buf, 0, 8);
+        continue;
+     }
+     
+
+     size --;
+
+     buf[size] = 0;
+
+     if (size != 5)
+     {
+        memset(buf, 0 ,8);
+        continue;
+     }
+
+     ret[i][0] = buf[0];
+    ret[i][1] = buf[1];
+     ret[i][2] = buf[2];
+     ret[i][3] = buf[3];
+     ret[i][4] = buf[4];
+     
+     memset(buf, 0, 8);
+     i++;
+
+     if (max <= i) break;
+     
+     
+  }
+
+  fclose(fd);
+
+Words words = 
+  {
+     .arr = (char **) &ret,
+     .n = i,
+  };
+
+  return words;
+  
+  
+   
+
+     
+
+}
+
 Result* cw(char *guess, char *word)
 {
     static Result res[5];
@@ -113,10 +204,12 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+   
     correct = argv[1];
-    guess = argv[2];
+     guess = argv[2];
+    
 
-    res = cw(correct, guess);
+    res = cw(guess, correct);
 
     Example_print(res);
     
