@@ -1,242 +1,299 @@
+#define _GNU_SOURCE  
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include<assert.h>
+#include<errno.h>
 
-#define max 200   
 #define ResultGreen 1
 #define ResultYellow 2
 #define ResultRed 4
+#define max 22
+#define ValOk 0
+#define ValBadInput 1
+#define ValNoSuchWord 2
 
+#define ClrGreen "\033[0;32m"
+#define ClrYellow "\033[0;33m"
+#define ClrRed "\033[0;31m"
+#define ClrStop  "\033[0m"
+
+
+
+typedef char ValResult;
 typedef char Result;
-void gameloop(char *);
+bool continuation;
+int rounds;
+bool corrects[5];
+bool win;
+
+
+char *readline(void);
+void prompt(char*);
 static char words[max][5];
-bool continuation;  
+void gameloop(char*);
 void seed(void);
 char *randomword(int);
-
-struct s_words
-{
-    char **arr;
-    int n;
-};
-
-typedef struct s_words Words; 
-
 int readfile(char*);
-bool isin(char, char*);
-void Example_print(Result*, char*, char*);
-Result* cw(char*, char*);
-Result cc(char, int, char*);
+void isin(char, char*);  
 
-int main(int, char**);
 
-void promt(int arr[])
 
-void Example_print(Result* res, char *guess, char *correct)
+char *randomword(int m)
 {
-    int i;
-
-    for (i = 0; i < 5; i++)
-    {
-        switch (res[i])
-        {
-            case ResultGreen:
-               
-                printf("%s%c%s", ClrGreen, guess[i], ClrStop);
-                break;
-
-            case ResultYellow:
-                 printf("%s%c%s", ClrYellow, guess[i], ClrStop);
-                break;
-
-            case ResultRed:
-               printf("%s%c%s", ClrRed, guess[i], ClrStop);
-                break;
-
-            default:
-                printf("unknown : %d\n", res[i]);
-             
-                break;
-        }
-    }
-
-    printf("\n");
-    return;
-}
-
-
-char * randomword(int m)
-{
-    int x;
-    
+   int x;
     static char ret[8];
+   x = rand() % max;
 
-    x = rand() %m;
+ ret[0] = words[x][0];
+ ret[1] = words[x][1];
+ ret[2] = words[x][2];
+ ret[3] = words[x][3];
+ ret[4] = words[x][4]; 
 
-    ret [0] = words[x][0];
-    ret [1] = words[x][1];
-     ret [2] = words[x][2];
-    ret [3] = words[x][3];
-     ret [4] = words[x][4];
-     ret[5] = 0;
+ ret[5] = 0; 
 
-     return ret;
-}
-
-bool isin(char c, char* str)
-{
-    int i, size;
-    size = strlen(str);
-
-    for (i = 0; i < size; i++)
-    {
-        if (str[i] == c)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-Result cc(char guess, int idx, char *word)
-{
-    char correct = word[idx];
-
-    if (guess == correct)
-        return ResultGreen;
-    else if (isin(guess, word))
-        return ResultYellow;
-
-    return ResultRed;
+ return ret;
 }
 
 
-int readfile(char* filename)
+
+
+
+
+int readfile(char *filename)
 {
     char buf[8];
-    int i, size;
+    int i,size;
+
     FILE *fd;
+  
+    
 
     fd = fopen(filename, "r");
 
     if (!fd)
     {
-        perror("fopen error");
+        
+        perror("fopen");
         return -1;
     }
 
-    i = 0;
+    
+
     memset(buf, 0, 8);
 
+    i = 0;
     while (fgets(buf, 7, fd))
     {
-        size = strlen(buf);
+            size = strlen(buf);
 
-        if (size < 1)
-        {
+            if (size < 1)
+            {
+                  memset(buf, 0, 8);
+                  continue;
+            }
+            
+
+            size--;
+            buf[size] = 0;
+
+            if (size != 5)
+            {
+                 memset(buf, 0, 8);
+                  continue;
+            }
+            
+            words[i][0] = buf[0];
+            words[i][1] = buf[1];
+            words[i][2] = buf[2];
+            words[i][3] = buf[3];
+            words[i][4] = buf[4];
+
             memset(buf, 0, 8);
-            continue;
-        }
+            i++;
 
-        size--; // Strip the newline character
-        buf[size] = 0;
-
-        if (size != 5)
-        {
-            memset(buf, 0, 8);
-            continue;
-        }
-
-        // Store word in words array
-        words[i][0] = buf[0];
-        words[i][1] = buf[1];
-        words[i][2] = buf[2];
-        words[i][3] = buf[3];
-        words[i][4] = buf[4];
-
-        // // Debug print to verify the word
-        // printf("Word %d: %s\n", i + 1, buf);  // Printing the buffer
-        // printf("Stored: %c%c%c%c%c\n", words[i][0], words[i][1], words[i][2], words[i][3], words[i][4]);
-
-        memset(buf, 0, 8);
-        i++;
-
-        if (max <= i) break;
+            if ( max <= i)
+            {
+                break;
+            }
+            
     }
 
     fclose(fd);
-    return i;
-}
-
-
-Result* cw(char *guess, char *word)
-{
-    static Result res[5];
-    int i;
-
-    for (i = 0; i < 5; i++)
-    {
-        res[i] = cc(guess[i], i, word);
-    }
-
-    return res;
+    
+    
+        return i;
+    
 }
 
 void seed()
 {
-    int x = getpid();
+    int x;
 
+    x = getpid();
     srand(x);
     return;
 }
 
+char *readline()
+{
+   static char buf[8];
+    int size;
 
+    memset(buf, 0, 8);
+    fgets(buf, 7, stdin);
+    size = strlen(buf);
+     assert(size > 0);
+    size--;
+
+    buf[size] = 0;
+    
+    return buf;
+}
+
+
+
+bool equal(char *corr, char *guess)
+{
+    for ( int i = 0; i < 5; i++)
+    {
+        if (corr[i] != guess[i])
+        {
+            return false;
+        }
+        
+    }
+    return true;
+    
+}
+
+void isin(char c, char *correct)
+{
+    for (int i = 0; i < 5; i++)
+    {
+         if (correct[i] == c)
+         {
+             corrects[i] = true;
+         }
+         
+    }
+    
+
+}
 void gameloop(char *correct)
 {
+    char *input;
+    input = readline();
+    int len = strlen(input);
+
+    if (len> 5 || len<5)
+    {
+        printf(" \n Please enter valid string \n");
+        return;
+
+    }
+    else if (equal(correct, input))
+    {
+        continuation = false;
+        win = true;
+        return;
+    }
+
+    else 
+    {
+         for (int i = 0; i < 5; i++)
+         {
+            isin(input[i], correct);
+         }
+         
+    }
+ printf("\n");
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (corrects[i])
+        {
+        
+            printf("%s%c%s",ClrYellow , correct[i], ClrStop);
+            
+        }
+        else
+        {
+            printf("%s-%s", ClrRed, ClrStop);
+        }
+        
+    }
+     for (int i = 0; i < 5; i++)
+    {
+          corrects[i] = false;        
+    }
+    printf("\n");
+    
+
+    return ;
+    
+
+    
+    
    
+    
+   
+     
+
 }
+
+int main(int ,char**);
 
 int main(int argc, char *argv[])
 {
     int n;
-    n = readfile("final.txt");
+     char *p;
 
-    seed();
+     corrects[0] = false;
+     corrects[1] = false;
+     corrects[2] = false;      
+     corrects[3] = false;
+    corrects[4] = false;
 
-    char *p;
-    p = randomword(n);
+     rounds = 1;
+     win = false;
+     seed();
+     n = readfile("final.txt");
+     assert(!(n<0));
 
-    // if (n < 0)
-    // {
-    //     printf("Failed to open\n");
-    // }
-    // else
-    // {
-    //     // printf("Total Words: %d\n", n);
+     p = randomword(n);
+     continuation = true;
 
-    //     // // Print the 11th word to check correct storage
-    //     // printf("Word 11: %c%c%c%c%c\n", words[10][0], words[10][1], words[10][2], words[10][3], words[10][4]);
+     while (continuation)
+     {
+         printf("\nROUND>%d\n", rounds);
+          printf("\nEnter the word\n");
+          gameloop(p);
+          rounds++;
+          if (win == false && rounds >5)
+        {
         
-    //     // // Print all words (optional, remove if file is large)
-    //     // for (int i = 0; i < n; i++)
-    //     // {
-    //     //     printf("Word %d: %c%c%c%c%c\n", i + 1, words[i][0], words[i][1], words[i][2], words[i][3], words[i][4]);
-    //     // }
+          win = false;
+          continuation = false;
+        }
 
-    //     printf("word : %s\n",randomword(n));
-    // }
 
-    assert(!(n < 0 ));
+     }
+     printf("The correct word was : %s %s %s\n", ClrGreen, p, ClrStop);
 
-    continuation = true;
-
-    while (continuation)
-    {
-        gameloop(p);
-    }
-    
+     if (win)
+     {
+         printf("\n %s Congratulation, you won the game %s\n", ClrGreen, ClrStop);
+     }
+     else
+     {
+        printf("\n %s You lost the game\n %s", ClrRed, ClrStop);
+     }
+     
+      
 
     return 0;
 }
