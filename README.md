@@ -1,9 +1,15 @@
 # Word_Guess
+ Description: A multi-game arcade has 2 different games in one machine
+             1> Wordle
+             2> Flappy bird
+
+
+  ![image](https://github.com/user-attachments/assets/a7ce2496-652b-423f-9fb0-6877b21fe8ca)
+
  ![image](https://github.com/user-attachments/assets/d6fd9cd6-4051-4d66-95e4-a7ac84f37bc5)
 
-Description: Text-based game where players guess a word letter by letter within a limited number of attempts. The word is randomly chosen from a list.
 
-## Features
+## Features of Wordle
 
 - Randomly selects a word from a  wordlist.
 

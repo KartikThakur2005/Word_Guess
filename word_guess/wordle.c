@@ -22,11 +22,10 @@ int rounds;
 bool corrects[5];
 bool win;
 
-// Rename your custom assert function to avoid conflict
 void my_assert(int condition) {
     if (!condition) {
         fprintf(stderr, "Assertion failed\n");
-        exit(1);  // Exit the program with a failure status
+        exit(1);  
     }
 }
 int main(int argc, char *argv[]) {
@@ -43,7 +42,7 @@ int main(int argc, char *argv[]) {
     win = false;
     seed();
 
-    n = readfile("final.txt"); // Final.txt will be read here as per the original functionality
+    n = readfile("final.txt"); 
     assert(!(n < 0));
 
     p = randomword(n);
