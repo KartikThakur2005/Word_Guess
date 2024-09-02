@@ -1,4 +1,5 @@
-# Word_Guess
+# Arcade 🎮🎮
+
  Description: A multi-game arcade has 2 different games in one machine
              1> Wordle
              2> Flappy bird
@@ -6,7 +7,10 @@
 
   ![image](https://github.com/user-attachments/assets/a7ce2496-652b-423f-9fb0-6877b21fe8ca)
 
+
+
  ![image](https://github.com/user-attachments/assets/d6fd9cd6-4051-4d66-95e4-a7ac84f37bc5)
+
 
 
 ## Features of Wordle
