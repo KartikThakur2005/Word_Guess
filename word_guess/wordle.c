@@ -1,8 +1,8 @@
-#include "game.h"
-#include "animation.h"
-#include "file.h"
-#include "input.h"
-#include "utils.h"
+#include "src/game.h"
+#include "src/animation.h"
+#include "src/file.h"
+#include "src/input.h"
+#include "src/utils.h"
 #include<stdio.h>
 #include <stdbool.h>  // Ensure this is included
 #include <assert.h>
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     win = false;
     seed();
 
-    n = readfile("final.txt"); 
+    n = readfile("src/final.txt"); 
     assert(!(n < 0));
 
     p = randomword(n);
