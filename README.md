@@ -32,3 +32,14 @@
 
  ![image](https://github.com/user-attachments/assets/4904b289-d7d5-436c-8b7c-549a4c0ab7e2)
 
+
+## How to Run the Project
+
+- To run this application place all the files in one folder
+
+ ![image](https://github.com/user-attachments/assets/88983dfc-368e-4b67-8e02-47eb37418693)
+
+ - To compile all the files use    gcc -o wordle wordle.c -L. -my_lib
+
+ - To run gem type ./wordle
+ 
