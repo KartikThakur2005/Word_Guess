@@ -42,4 +42,14 @@
  - To compile all the files use    gcc -o wordle wordle.c -L. -my_lib
 
  - To run gem type ./wordle
- 
+ ![image](https://github.com/user-attachments/assets/9db9788b-c88f-4ccb-a7cd-5324a059dd20)
+
+
+## How to play Game
+
+- Type 1 for Wordle
+- Type 2 for Flappy word
+- Type 3 for exiting 
+
+
+- ![image](https://github.com/user-attachments/assets/e3cb1e28-7af8-4838-8b8c-bf2e2bbf3611)
