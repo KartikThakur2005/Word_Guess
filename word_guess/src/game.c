@@ -17,9 +17,6 @@ extern bool corrects[5];
 extern bool win;
  
 
-// Define your functions and other code here
-
-
 
 
 

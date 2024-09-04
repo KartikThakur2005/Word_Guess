@@ -4,7 +4,7 @@
 #include "src/input.h"
 #include "src/utils.h"
 #include<stdio.h>
-#include <stdbool.h>  // Ensure this is included
+#include <stdbool.h>  
 #include <assert.h>
 #include<stdlib.h>
 extern bool continuation;
@@ -28,7 +28,8 @@ void my_assert(int condition) {
         exit(1);  
     }
 }
-int main(int argc, char *argv[]) {
+int main() 
+{
     int n;
     char *p;
 
@@ -49,7 +50,6 @@ int main(int argc, char *argv[]) {
     continuation = true;
 
     ani();
-    printf("\n%s\n", p);
 
     while (continuation) {
         printf("\nROUND>%d\n", rounds);
