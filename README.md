@@ -66,11 +66,11 @@ Use #include #include <windows.h>   instead of #include <unistd.h>
 Like this  </br>
 ![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
 
-2> Type  ar rcs lib_myLibrary.a  <>
+2> Type  ar rcs lib_myLibrary.a src/ani_out src/file_out src/game_out src/input_out src/util_out
 ![image](https://github.com/user-attachments/assets/3bcb04c5-950d-401d-99c7-389893f38efb)
 
 3>  Type gcc -o run wordle.c -L. lib_myLibrary.a to compile every thing
-4> To run game type gcc ./run
+- To run game type gcc ./run
 
 ## How to play Game
 
