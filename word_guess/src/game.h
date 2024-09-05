@@ -1,5 +1,6 @@
-#ifndef GAME_H
-#define GAME_H
+// #ifndef GAME_H
+// #define GAME_H
+#include "animation.h"
 
 #include <stdbool.h>
 
@@ -12,4 +13,4 @@ void gameloop(char *correct);
 bool equal(char *corr, char *guess);
 void isin(char c, char *correct);
 
-#endif
+// #endif

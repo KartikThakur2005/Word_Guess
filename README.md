@@ -45,11 +45,24 @@
 
 ## How to Run the Project
 
-- To run this application place all the files in one folder
+- To run this application place all the files in one folder because
+ every every header file is connected to each otehr
 
- ![image](https://github.com/user-attachments/assets/88983dfc-368e-4b67-8e02-47eb37418693)
+ ![image](https://github.com/user-attachments/assets/9efc4a46-3931-45fa-99dd-c5d9a8cdd754)
 
- - To compile all the files use    gcc -o wordle wordle.c -L. -my_lib
+
+ - To compile all the files
+   
+   1> First create output file of all libraray to make one single library  
+   ![image](https://github.com/user-attachments/assets/f4986bcb-8278-4206-99c7-587d527b234e)  
+
+   Like this
+   ![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
+
+   2> Type  ar rcs lib_myLibrary.a  
+
+
+
 
  - To run gem type ./wordle
  ![image](https://github.com/user-attachments/assets/9db9788b-c88f-4ccb-a7cd-5324a059dd20)
