@@ -42,28 +42,6 @@
 
  ![image](https://github.com/user-attachments/assets/4904b289-d7d5-436c-8b7c-549a4c0ab7e2)
 
-
-## How to Run the Project
-- To run this application place all the files in one folder because
- every every header file is connected to each otehr</br>
- ![image](https://github.com/user-attachments/assets/9efc4a46-3931-45fa-99dd-c5d9a8cdd754)
-
- - To compile all the files
-   
- 1> First create output file of all libraray to make one single library  </br>
-   ![image](https://github.com/user-attachments/assets/f4986bcb-8278-4206-99c7-587d527b234e)  
-
-  Like this  </br>
-![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
-
-2> Type  ar rcs lib_myLibrary.a  <>
-
-
-
-
- - To run gem type ./wordle
- ![image](https://github.com/user-attachments/assets/9db9788b-c88f-4ccb-a7cd-5324a059dd20)
-
 ## Header files for Linux OS
 #include <time.h>
 #include <unistd.h>
@@ -74,6 +52,25 @@
 
 Use #include <conio.h>   instead of #include <termios.h>
 Use #include #include <windows.h>   instead of #include <unistd.h>
+
+## How to Run the Project
+- To run this application place all the files in one folder because
+ every every header file is connected to each otehr</br>
+![image](https://github.com/user-attachments/assets/9efc4a46-3931-45fa-99dd-c5d9a8cdd754)
+
+- To compile all the files
+   
+1> First create output file of all libraray to make one single library  </br>
+![image](https://github.com/user-attachments/assets/f4986bcb-8278-4206-99c7-587d527b234e)  
+
+Like this  </br>
+![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
+
+2> Type  ar rcs lib_myLibrary.a  <>
+![image](https://github.com/user-attachments/assets/3bcb04c5-950d-401d-99c7-389893f38efb)
+
+3>  Type gcc -o run wordle.c -L. lib_myLibrary.a to compile every thing
+4> To run game type gcc ./run
 
 ## How to play Game
 
