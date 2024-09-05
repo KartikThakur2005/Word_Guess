@@ -44,6 +44,16 @@
  - To run gem type ./wordle
  ![image](https://github.com/user-attachments/assets/9db9788b-c88f-4ccb-a7cd-5324a059dd20)
 
+## Header files for Linux OS
+#include <time.h>
+#include <unistd.h>
+#include <termios.h>
+#include <fcntl.h>
+
+## Header files for Window OS
+
+Use #include <conio.h>   instead of #include <termios.h>
+Use #include #include <windows.h>   instead of #include <unistd.h>
 
 ## How to play Game
 
