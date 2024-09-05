@@ -12,6 +12,15 @@
  ![image](https://github.com/user-attachments/assets/d6fd9cd6-4051-4d66-95e4-a7ac84f37bc5)
 
 
+## Table of Contents
+- Requirements
+- Installation
+         - Linux
+          - Windows
+- Usage
+- Running the Game
+
+
 
 ## Features of Wordle
 
