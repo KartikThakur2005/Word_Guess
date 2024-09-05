@@ -13,6 +13,7 @@
 
 
 ## Table of Contents
+- Feature of Games
 - Requirements
 - Installation
          - Linux
