@@ -1,15 +1,15 @@
 # Arcade 🎮🎮
 
- Description: A multi-game arcade has 2 different games in one machine
-             1> Wordle
-             2> Flappy bird
+ Description: A multi-game arcade has 2 different games in one machine</br>
+             1> Wordle</br>
+             2> Flappy bird</br>
 
 
-  ![image](https://github.com/user-attachments/assets/a7ce2496-652b-423f-9fb0-6877b21fe8ca)
+  ![image](https://github.com/user-attachments/assets/a7ce2496-652b-423f-9fb0-6877b21fe8ca)</br>
 
 
 
- ![image](https://github.com/user-attachments/assets/d6fd9cd6-4051-4d66-95e4-a7ac84f37bc5)
+ ![image](https://github.com/user-attachments/assets/d6fd9cd6-4051-4d66-95e4-a7ac84f37bc5)  
 
 
 ## Table of Contents
@@ -44,22 +44,23 @@
 
 
 ## How to Run the Project
-
+</br>
 - To run this application place all the files in one folder because
- every every header file is connected to each otehr
+ every every header file is connected to each otehr</br>
 
  ![image](https://github.com/user-attachments/assets/9efc4a46-3931-45fa-99dd-c5d9a8cdd754)
 
 
- - To compile all the files
+ - To compile all the files</br>
    
- - First create output file of all libraray to make one single library  
+ 1> First create output file of all libraray to make one single library  </br>
    ![image](https://github.com/user-attachments/assets/f4986bcb-8278-4206-99c7-587d527b234e)  
+   </br>
 
- - Like this
+  Like this  
 ![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
 
-- Type  ar rcs lib_myLibrary.a  
+2> Type  ar rcs lib_myLibrary.a  <>
 
 
 
