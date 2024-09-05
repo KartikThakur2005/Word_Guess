@@ -53,13 +53,13 @@
 
  - To compile all the files
    
-   1> First create output file of all libraray to make one single library  
+ - First create output file of all libraray to make one single library  
    ![image](https://github.com/user-attachments/assets/f4986bcb-8278-4206-99c7-587d527b234e)  
 
-   Like this
-   ![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
+ - Like this
+![image](https://github.com/user-attachments/assets/c746e42f-9574-4fbb-a251-463a6c0a9fc7)  
 
-   2> Type  ar rcs lib_myLibrary.a  
+- Type  ar rcs lib_myLibrary.a  
 
 
 
